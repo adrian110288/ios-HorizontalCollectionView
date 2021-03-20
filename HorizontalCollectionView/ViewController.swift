@@ -24,12 +24,48 @@ class ViewController: UIViewController {
         ImageData(name: "square_12")
     ]
     
+    enum Section {
+        case main
+    }
+    
     private let sectionInset: CGFloat = 16.0
     
     @IBOutlet var collectionView: UICollectionView!
-
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, ImageData>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Collection"
+        
+        let flowLayout = configureLayout()
+        collectionView.collectionViewLayout = flowLayout
+        
+        dataSource = configureDataSource()
+        collectionView.dataSource = dataSource
+        
+        var initialSnapShot = NSDiffableDataSourceSnapshot<Section, ImageData>()
+        initialSnapShot.appendSections([.main])
+        initialSnapShot.appendItems(data)
+        
+        dataSource.apply(initialSnapShot, animatingDifferences: false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let selectedItemIndex = collectionView.indexPathsForSelectedItems?.first?.row else {
+            return
+        }
+        
+        if segue.identifier == "imagePressed" {
+            
+            let destinationVc = segue.destination as! ImageViewController
+            destinationVc.imageData = data[selectedItemIndex]
+        }
+    }
+    
+    func configureLayout() -> UICollectionViewLayout {
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -42,40 +78,25 @@ class ViewController: UIViewController {
         flowLayout.minimumLineSpacing = 8.0
         flowLayout.sectionInset = UIEdgeInsets(top: sectionInset, left: sectionInset, bottom: sectionInset, right: sectionInset)
         
-        collectionView.collectionViewLayout = flowLayout
-        collectionView.dataSource = self
-        
-        navigationItem.title = "Collection"
+        return flowLayout
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func configureDataSource() -> UICollectionViewDiffableDataSource<Section, ImageData> {
         
-        guard let selectedItemIndex = collectionView.indexPathsForSelectedItems?.first?.row else {
-            return
-        }
-    
-        if segue.identifier == "imagePressed" {
+        let dataSource = UICollectionViewDiffableDataSource<Section, ImageData>(collectionView: self.collectionView) {
+            (collectionView, indexPath, imageData) -> UICollectionViewCell? in
             
-            let destinationVc = segue.destination as! ImageViewController
-            destinationVc.imageData = data[selectedItemIndex]
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as? ImageCell else {
+                fatalError("Could not deque cell")
+            }
+            
+            cell.configure(withData: imageData)
+            
+            return cell
         }
-    }
-}
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
+        return dataSource
         
-        let imageData = data[indexPath.row]
-        
-        cell.configure(withData: imageData)
-        
-        return cell
     }
 }
 

@@ -7,6 +7,6 @@
 
 import Foundation
  
-struct ImageData {
+struct ImageData: Hashable {
     var name: String
 }
