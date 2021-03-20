@@ -7,7 +7,9 @@
 
 import UIKit
 
-class CustomCellCollectionViewCell: UICollectionViewCell {
+class ImageCell: UICollectionViewCell {
+    
+    static public let identifier = String(describing: ImageCell.self)
     
     @IBOutlet var imageView: UIImageView!
     
@@ -28,8 +30,8 @@ class CustomCellCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
     }
     
-    func configure(withImage name: String) {
-        imageView.image = UIImage(named: name)
+    func configure(withData data: ImageData) {
+        imageView.image = UIImage(named: data.name)
     }
     
     override func prepareForReuse() {

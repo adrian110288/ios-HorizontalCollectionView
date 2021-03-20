@@ -13,8 +13,9 @@
 		EBA1DD8A26061FC900338BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA1DD8826061FC900338BC0 /* Main.storyboard */; };
 		EBA1DD8C26061FCC00338BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA1DD8B26061FCC00338BC0 /* Assets.xcassets */; };
 		EBA1DD8F26061FCC00338BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA1DD8D26061FCC00338BC0 /* LaunchScreen.storyboard */; };
-		EBA1DD982606216300338BC0 /* CustomCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1DD972606216300338BC0 /* CustomCellCollectionViewCell.swift */; };
+		EBA1DD982606216300338BC0 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1DD972606216300338BC0 /* ImageCell.swift */; };
 		EBA1DD9B2606387400338BC0 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1DD9A2606387400338BC0 /* ImageViewController.swift */; };
+		EBA1DD9F2606B11000338BC0 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1DD9E2606B11000338BC0 /* ImageData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +27,9 @@
 		EBA1DD8B26061FCC00338BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA1DD8E26061FCC00338BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBA1DD9026061FCC00338BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBA1DD972606216300338BC0 /* CustomCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		EBA1DD972606216300338BC0 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		EBA1DD9A2606387400338BC0 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		EBA1DD9E2606B11000338BC0 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +69,9 @@
 				EBA1DD8B26061FCC00338BC0 /* Assets.xcassets */,
 				EBA1DD8D26061FCC00338BC0 /* LaunchScreen.storyboard */,
 				EBA1DD9026061FCC00338BC0 /* Info.plist */,
-				EBA1DD972606216300338BC0 /* CustomCellCollectionViewCell.swift */,
+				EBA1DD972606216300338BC0 /* ImageCell.swift */,
 				EBA1DD9A2606387400338BC0 /* ImageViewController.swift */,
+				EBA1DD9E2606B11000338BC0 /* ImageData.swift */,
 			);
 			path = HorizontalCollectionView;
 			sourceTree = "<group>";
@@ -147,7 +150,8 @@
 				EBA1DD8326061FC900338BC0 /* AppDelegate.swift in Sources */,
 				EBA1DD9B2606387400338BC0 /* ImageViewController.swift in Sources */,
 				EBA1DD8526061FC900338BC0 /* SceneDelegate.swift in Sources */,
-				EBA1DD982606216300338BC0 /* CustomCellCollectionViewCell.swift in Sources */,
+				EBA1DD982606216300338BC0 /* ImageCell.swift in Sources */,
+				EBA1DD9F2606B11000338BC0 /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

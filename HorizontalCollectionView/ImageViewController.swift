@@ -11,14 +11,18 @@ class ImageViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
-    var imageNamed: String!
+    var imageData: ImageData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = UIImage(named: imageNamed)
-        
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
+        guard let imageData = imageData else { return }
+        
+        imageView.image = UIImage(named: imageData.name)
+        
+        
     }
 
 }

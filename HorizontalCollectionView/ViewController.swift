@@ -9,6 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let data = [
+        ImageData(name: "square_1"),
+        ImageData(name: "square_2"),
+        ImageData(name: "square_3"),
+        ImageData(name: "square_4"),
+        ImageData(name: "square_5"),
+        ImageData(name: "square_6"),
+        ImageData(name: "square_7"),
+        ImageData(name: "square_8"),
+        ImageData(name: "square_9"),
+        ImageData(name: "square_10"),
+        ImageData(name: "square_11"),
+        ImageData(name: "square_12")
+    ]
+    
     private let sectionInset: CGFloat = 16.0
     
     @IBOutlet var collectionView: UICollectionView!
@@ -42,21 +57,23 @@ class ViewController: UIViewController {
         if segue.identifier == "imagePressed" {
             
             let destinationVc = segue.destination as! ImageViewController
-            destinationVc.imageNamed = "square_\(selectedItemIndex + 1)"
+            destinationVc.imageData = data[selectedItemIndex]
         }
     }
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        12
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCellCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
         
-        cell.configure(withImage: "square_\(indexPath.row + 1)")
+        let imageData = data[indexPath.row]
+        
+        cell.configure(withData: imageData)
         
         return cell
     }
